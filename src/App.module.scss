@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+.Organizer {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'UL UR'
+    'BL BR';
+}
+.UL {
+  display: grid;
+  grid-auto-flow: column;
+  align-self: start;
+}
+.UR {
+  display: grid;
+}

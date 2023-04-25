@@ -1,0 +1,30 @@
+.root {
+  display: grid;
+  grid-template-columns: auto;
+}
+.Header {
+  display: grid;
+  grid-template-areas: 'headerInfo headerInfo studentInfo studentInfo headerButtons';
+  border: 5px double black;
+  border-radius: 5px;
+}
+.headerInfo {
+  overflow: inherit;
+  align-self: start;
+}
+.studentInfo {
+  display: grid;
+  grid-template-areas:
+    'infoStudent infoMajor'
+    'infoBottom infoMinor';
+}
+.headerButtons {
+  position: absolute;
+  right: 10px;
+  overflow: inherit;
+  min-width: 50px;
+  min-height: 50px;
+}
+.ChoosePlan {
+  flex-grow: 4;
+}

@@ -10,5 +10,21 @@ export interface ULProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-uls-and-templates
  */
 export const UL = ({ className }: ULProps) => {
-    return <div className={classNames(styles.root, className)}>UL</div>;
+    return (
+        <div className={classNames(styles.root, className)}>
+            <div>
+                Imagine an accordian hereImagine an accordian hereImagine an accordian hereImagine
+                an accordian here Imagine an accordian hereImagine an accordian hereImagine an
+                accordian hereImagine an accordian here Imagine an accordian hereImagine an
+                accordian hereImagine an accordian hereImagine an accordian here Imagine an
+                accordian hereImagine an accordian hereImagine an accordian hereImagine an accordian
+                here Imagine an accordian hereImagine an accordian hereImagine an accordian
+                hereImagine an accordian here Imagine an accordian hereImagine an accordian
+                hereImagine an accordian hereImagine an accordian here Imagine an accordian
+                hereImagine an accordian hereImagine an accordian hereImagine an accordian here
+                Imagine an accordian hereImagine an accordian hereImagine an accordian hereImagine
+                an accordian here
+            </div>
+        </div>
+    );
 };
