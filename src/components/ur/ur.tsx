@@ -12,10 +12,49 @@ export interface URProps {
 export const UR = ({ className }: URProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <div>
-                <div />
-                <div />
-                UR
+            <div className={styles.GridSchedule}>
+                <div className={styles.Semester}>
+                    <ul>
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
+                <div className={styles.Semester}>
+                    <ul>
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
+                <div className={styles.Semester}>
+                    <ul>
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
+                <div className={styles.Semester}>
+                    <ul>
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
+                <div className={styles.Semester}>
+                    <ul>
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
+                <div className={styles.Semester}>
+                    <ul>
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
             </div>
         </div>
     );

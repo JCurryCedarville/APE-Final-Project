@@ -11,6 +11,13 @@
 .headerInfo {
   overflow: inherit;
   align-self: start;
+  h1 {
+    font-size: 60pt;
+    padding: 0px;
+    margin: 0px;
+  }
+  display: block;
+  grid-template-columns: none;
 }
 .studentInfo {
   display: grid;
