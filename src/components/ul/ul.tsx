@@ -12,19 +12,7 @@ export interface ULProps {
 export const UL = ({ className }: ULProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <div>
-                Imagine an accordian hereImagine an accordian hereImagine an accordian hereImagine
-                an accordian here Imagine an accordian hereImagine an accordian hereImagine an
-                accordian hereImagine an accordian here Imagine an accordian hereImagine an
-                accordian hereImagine an accordian hereImagine an accordian here Imagine an
-                accordian hereImagine an accordian hereImagine an accordian hereImagine an accordian
-                here Imagine an accordian hereImagine an accordian hereImagine an accordian
-                hereImagine an accordian here Imagine an accordian hereImagine an accordian
-                hereImagine an accordian hereImagine an accordian here Imagine an accordian
-                hereImagine an accordian hereImagine an accordian hereImagine an accordian here
-                Imagine an accordian hereImagine an accordian hereImagine an accordian hereImagine
-                an accordian here
-            </div>
+            <div>Imagine an accordian here</div>
         </div>
     );
 };

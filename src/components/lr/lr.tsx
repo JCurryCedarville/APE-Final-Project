@@ -13,7 +13,19 @@ export const LR = ({ className }: LRProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <div>
-                <table>LR</table>
+                <table id="catalogTable">
+                    <thead>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Description</th>
+                            <th>Credits</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        [DATA HERE]
+                    </tbody>
+                </table>
             </div>
         </div>
     );
