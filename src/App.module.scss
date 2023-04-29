@@ -37,11 +37,14 @@
   }
 }
 .Organizer {
+  background-image: url('https://i.pinimg.com/736x/70/e1/b6/70e1b6a21728aa677acd08738518915b.jpg');
+  color: #270060;
   display: grid;
   grid-template-areas:
     'header'
     'UL UR'
     'BL BR';
+  grid-template-rows: 1fr 4fr;
 }
 .UL {
   display: grid;
@@ -53,8 +56,8 @@
 }
 .MainBody {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 1fr;
   gap: 5px;
   overflow: scroll;
   flex-grow: 10;

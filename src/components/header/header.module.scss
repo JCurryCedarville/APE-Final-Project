@@ -1,11 +1,12 @@
 .root {
   display: grid;
   grid-template-columns: auto;
+  font-size: 150%;
 }
 .Header {
   display: grid;
   grid-template-areas: 'headerInfo headerInfo studentInfo studentInfo headerButtons';
-  border: 5px double black;
+  border: 5px double #39055a;
   border-radius: 5px;
   grid-template-columns: 3fr 2fr 1fr;
 }
@@ -35,4 +36,6 @@
 }
 .ChoosePlan {
   flex-grow: 4;
+  background-color: rgba(94, 7, 130, 0.33);
+  font-size: 150%;
 }
