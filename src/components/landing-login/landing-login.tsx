@@ -24,7 +24,7 @@ export const LandingLogin = ({ className }: LandingLoginProps) => {
                     <input type="text" />
                     <br />
                     <br />
-                    <input type="submit" value="Submit" />
+                    <button>Submit</button> 
                 </form>
             </div>
         </div>
