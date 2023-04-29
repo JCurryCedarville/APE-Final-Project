@@ -7,7 +7,9 @@ import { FacultyPage } from './components/faculty-page/faculty-page';
 function App() {
     return (
         <div className={styles.App}>
-            <LandingLogin />
+            <div>
+                <LandingLogin />
+            </div>
             <div className={styles.FacultyPage}>
                 <FacultyPage />
             </div>
