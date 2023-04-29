@@ -9,6 +9,8 @@ import { LR } from './components/lr/lr';
 function App() {
     return (
         <div className={styles.App}>
+            <div />
+            <div className={styles.Planner}></div>
             <div className={styles.Organizer}>
                 <Header />
                 <div className={styles.MainBody}>
