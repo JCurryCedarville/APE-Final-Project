@@ -12,7 +12,7 @@ export interface LLProps {
 export const LL = ({ className }: LLProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <video controls={true} src="/src/assets/quaso.mp4" />
+            <video controls={true} src="/src/assets/quaso2.mp4" />
         </div>
     );
 };
