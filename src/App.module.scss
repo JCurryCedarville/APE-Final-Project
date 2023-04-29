@@ -64,7 +64,7 @@
 }
 
 .Planner {
-  display: none;
+  display: block;
 }
 .FacultyPage {
   width: 50%;
@@ -72,5 +72,7 @@
   top: 20%;
   left: 25vw;
   right: auto;
-  display: none;
+}
+.LoginPage {
+  display: block;
 }

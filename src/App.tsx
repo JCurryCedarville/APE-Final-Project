@@ -5,9 +5,29 @@ import { Planner } from './components/planner/planner';
 import { FacultyPage } from './components/faculty-page/faculty-page';
 
 function App() {
+    // switch (Action as string) {
+//     case '/FacultyPage':{
+        
+//         <div className={styles.FacultyPage}>
+//             <FacultyPage />
+//         </div>
+//         }
+//     case '/Planner':{
+        
+//             <div className={styles.Planner}>
+//                 <Planner />
+//             </div>
+//             }
+//     case 'default':{
+        
+//             <div className={styles.LoginPage}>
+//                 <LandingLogin />
+//             </div>
+//             }
+// }
     return (
         <div className={styles.App}>
-            <div>
+            <div className={styles.LoginPage}>
                 <LandingLogin />
             </div>
             <div className={styles.FacultyPage}>
