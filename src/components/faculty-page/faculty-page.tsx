@@ -20,22 +20,22 @@ export const FacultyPage = ({ className }: FacultyPageProps) => {
             <h1>Welcome Faculty!</h1>
             <h2>Your students are:</h2>
             <table className={styles.CatalogTable}>
-                <tr>
+                <thead>
                     <th>Student Name</th>
                     <th>Total Credits</th>
                     <th>Major</th>
                     <th>Default Plan</th>
-                </tr>
+                </thead>
                 {data.map((val, key) => {
                     return (
-                        <tr key={key}>
+                        <tbody key={key}>
                             <td>{val.name}</td>
                             <td>{val.id}</td>
                             <td>{val.mjor}</td>
                             <td>
                                 <button>{val.planlink}</button>
                             </td>
-                        </tr>
+                        </tbody>
                     );
                 })}
             </table>
