@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "startExpress": "node ./src/MiddleWare/bin/www",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

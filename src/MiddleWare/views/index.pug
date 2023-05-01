@@ -5,6 +5,11 @@ block content
   #main
     h1 h1Title 
     #mainTable 
+      form(action="/users" method="GET")
+        .form
+          input(type= "submit" value= "Add User")
+          input(type= "submit" value= "Edit Catalog")
+      //form
       table
         thead
           th Catalog 

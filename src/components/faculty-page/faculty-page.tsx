@@ -14,7 +14,7 @@ const data = [
     { name: 'Jeffery', id: 13, planlink: 'Click here', mjor: 'Art' },
     { name: 'Chris', id: 25, planlink: 'Click here', mjor: 'Computer' },
 ];
-var url = '/Planner/';
+var url = 'http://localhost:4000/user/';
 export const FacultyPage = ({ className }: FacultyPageProps) => {
     return (
         <div className={classNames(styles.root, className)}>

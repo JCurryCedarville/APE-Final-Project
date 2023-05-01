@@ -1,9 +1,23 @@
 var express = require('express');
+var db = require('../db/database.js');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+/* GET home page. */
+router.get('/users', function(req, res, next) {
+var userList = [];
+
+  var sql = "select * from the_user";
+  db.query(sql, (err, rows) => {
+
+    if(err){
+      console.log("select from the_user failed");
+      console.log(err);
+      return;
+    }
+    //render index.pug page using array
+    res.render('users', {users: rows});
+  });
 });
 
 module.exports = router;
+
