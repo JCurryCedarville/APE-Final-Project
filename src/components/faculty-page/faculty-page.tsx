@@ -14,6 +14,7 @@ const data = [
     { name: 'Jeffery', id: 13, planlink: 'Click here', mjor: 'Art' },
     { name: 'Chris', id: 25, planlink: 'Click here', mjor: 'Computer' },
 ];
+var url = '/Planner/';
 export const FacultyPage = ({ className }: FacultyPageProps) => {
     return (
         <div className={classNames(styles.root, className)}>
@@ -33,7 +34,10 @@ export const FacultyPage = ({ className }: FacultyPageProps) => {
                             <td>{val.id}</td>
                             <td>{val.mjor}</td>
                             <td>
-                                <button>{val.planlink}</button>
+                                <form action={url} method='GET'>
+                                    <input type="hidden" name ="plan" value={val.id} />
+                                    <button type='submit'>{val.planlink}</button>
+                                </form>
                             </td>
                         </tbody>
                     );
