@@ -64,7 +64,7 @@
 }
 
 .Planner {
-  display: block;
+  display: none;
 }
 .FacultyPage {
   width: 50%;
@@ -72,7 +72,19 @@
   top: 20%;
   left: 25vw;
   right: auto;
+  display: none;
 }
 .LoginPage {
+  display: block;
+}
+.LoginOrginizer {
+  display: grid;
+  margin: 3px;
+  padding: 3px;
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: none;
+  text-align: center;
+}
+.LoginForm {
   display: block;
 }

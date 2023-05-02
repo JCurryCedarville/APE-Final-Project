@@ -10,10 +10,15 @@ export interface URProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-urs-and-templates
  */
 export const UR = ({ className }: URProps) => {
+    function SaveNotes(event:any) {
+        var r = event.target;
+        console.log(r.value);
+    };
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.GridSchedule}>
                 <div className={styles.Semester}>
+
                     <ul>
                         <li>Coffee</li>
                         <li>Tea</li>
@@ -55,6 +60,11 @@ export const UR = ({ className }: URProps) => {
                         <li>Milk</li>
                     </ul>
                 </div>
+            </div>
+            <div className={styles.Notes}>
+                <label>
+                    Notes: <textarea name="notes" id='notes' onBlur={SaveNotes}></textarea>
+                </label>
             </div>
         </div>
     );
