@@ -48,12 +48,12 @@ function App() {
                 .then(data => setData(data))  
                 .catch(err => console.log(err));
                 }, []);
-                for (d in Data.object){
-                    if (d.name == username){
-                        window.document.getElementById("planId")?.setAttribute("value", d.planId);
+                Data.object.map((val, key) => {
+                    if (val.name == username){
+                        window.document.getElementById("planId")?.setAttribute("value", val.planId);
                     }
                 }
-            }
+                );}
             else if (page == "LoginPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: block;");
@@ -63,6 +63,7 @@ function App() {
     }
     return (
         <div className={styles.App}>
+            <div id="planId" style={{display: "none"}}></div>
             <div id="Login" >
                 <div className={styles.LoginOrginizer}>
                 <h1>Login:</h1>

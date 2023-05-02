@@ -22,6 +22,14 @@ export const FacultyPage = ({ className }: FacultyPageProps) => {
     .then(data => setData(data))  
     .catch(err => console.log(err));
     }, []);
+
+    function PlanChose(event:any) {
+        var r = event.target;
+        window.document.getElementById("planId")?.setAttribute("value", r.value);
+        window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
+        window.document.getElementById("Login")?.setAttribute("style", "display: none;");
+        window.document.getElementById("Planner")?.setAttribute("style", "display: block;");
+    };
     return (
         <div className={classNames(styles.root, className)}>
             <h1>Welcome Faculty!</h1>
