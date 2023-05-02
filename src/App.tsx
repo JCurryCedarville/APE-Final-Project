@@ -21,9 +21,9 @@ function App() {
             Show("FacultyPage");
             
         }
-        function Show(page){
+        function Show(page:string){
             if (page == "FacultyPage"){
-                //document.getElementsByClassName()
+                document.getElementsByClassName("")
             }
         }
         //need to change this to the faculty page
