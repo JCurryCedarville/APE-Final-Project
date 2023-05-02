@@ -2,6 +2,7 @@ import styles from './App.module.scss';
 import { LandingLogin } from './components/landing-login/landing-login';
 import { Planner } from './components/planner/planner';
 import { FacultyPage } from './components/faculty-page/faculty-page';
+import { useEffect, useState } from 'react';
 
 function App() {
     function onFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
@@ -39,6 +40,19 @@ function App() {
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Planner")?.setAttribute("style", "display: block;");
+                var username = window.document.getElementById("name")?.innerText;
+                const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
+                useEffect(() => {
+                fetch('http://localhost:4000/users/')
+                .then(res => res.json())
+                .then(data => setData(data))  
+                .catch(err => console.log(err));
+                }, []);
+                for (d in Data.object){
+                    if (d.name == username){
+                        window.document.getElementById("planId")?.setAttribute("value", d.planId);
+                    }
+                }
             }
             else if (page == "LoginPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");

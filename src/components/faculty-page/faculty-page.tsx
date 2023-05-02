@@ -17,12 +17,10 @@ export const FacultyPage = ({ className }: FacultyPageProps) => {
     const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
 
     useEffect(() => {
-    fetch('http://localhost:4000/catalog/')
+    fetch('http://localhost:4000/users/')
     .then(res => res.json())
     .then(data => setData(data))  
     .catch(err => console.log(err));
-    //console.log(Data);
-    //var url = 'http://localhost:4000/catalog/';
     }, []);
     return (
         <div className={classNames(styles.root, className)}>

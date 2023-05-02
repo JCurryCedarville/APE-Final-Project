@@ -1,5 +1,6 @@
 import styles from './ur.module.scss';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 export interface URProps {
     className?: string;
@@ -14,57 +15,38 @@ export const UR = ({ className }: URProps) => {
         var r = event.target;
         console.log(r.value);
     };
+    const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
+
+    useEffect(() => {
+    fetch('http://localhost:4000/plan/' + document.getElementById('planId')?.getAttribute('value'))
+    .then(res => res.json())
+    .then(data => setData(data))  
+    .catch(err => console.log(err));
+    }, []);
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.GridSchedule}>
-                <div className={styles.Semester}>
-
-                    <ul>
-                        <li>Coffee</li>
-                        <li>Tea</li>
-                        <li>Milk</li>
-                    </ul>
-                </div>
-                <div className={styles.Semester}>
-                    <ul>
-                        <li>Coffee</li>
-                        <li>Tea</li>
-                        <li>Milk</li>
-                    </ul>
-                </div>
-                <div className={styles.Semester}>
-                    <ul>
-                        <li>Coffee</li>
-                        <li>Tea</li>
-                        <li>Milk</li>
-                    </ul>
-                </div>
-                <div className={styles.Semester}>
-                    <ul>
-                        <li>Coffee</li>
-                        <li>Tea</li>
-                        <li>Milk</li>
-                    </ul>
-                </div>
-                <div className={styles.Semester}>
-                    <ul>
-                        <li>Coffee</li>
-                        <li>Tea</li>
-                        <li>Milk</li>
-                    </ul>
-                </div>
-                <div className={styles.Semester}>
-                    <ul>
-                        <li>Coffee</li>
-                        <li>Tea</li>
-                        <li>Milk</li>
-                    </ul>
-                </div>
-            </div>
-            <div className={styles.Notes}>
+                {Data.object.map((val, key) => {
+                    return (
+                        <div className={styles.Semester} key={key}>
+                            <td>{val.name}</td>
+                            <td>{val.password}</td>
+                            <td>{val.type}</td>
+                            <td>
+                                <form action={""} method='GET'>
+                                    <input type="hidden" name ="plan" value={val.planId} />
+                                    <button type='submit'>Click Me!</button>
+                                </form>
+                            </td>
+                        </div>
+                    );
+                })}
+                    
+                <div className={styles.Notes}>
                 <label>
                     Notes: <textarea name="notes" id='notes' onBlur={SaveNotes}></textarea>
                 </label>
+                </div>
             </div>
         </div>
     );
