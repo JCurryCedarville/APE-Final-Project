@@ -11,7 +11,7 @@ export interface HeaderProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-headers-and-templates
  */
 export const Header = ({ className }: HeaderProps) => {
-    const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  majior: "",  dmajior: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
+    const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  major: "",  dmajor: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
 
     useEffect(() => {
     fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
@@ -39,11 +39,12 @@ export const Header = ({ className }: HeaderProps) => {
 
                     <div id="infoMajor">
                         <p className="infoP">
-                            <strong>Major:</strong> {Data.object[0].majior + Data.object[0].dmajior}
+                            <strong>Major:</strong> {Data.object[0].major} {Data.object[0].dmajor}
                         </p>
                     </div>
 
                     <div id="infoCatalog">
+                        <input type="hidden" id="yearNum" value={Data.object[0].cat_year} />
                         <p className="infoP">
                             <strong>Catalog:</strong> {Data.object[0].cat_year}
                         </p>
@@ -51,7 +52,7 @@ export const Header = ({ className }: HeaderProps) => {
 
                     <div id="infoMinor">
                         <p className="infoP">
-                            <strong>Minor:</strong> {Data.object[0].minor + Data.object[0].dminor}
+                            <strong>Minor:</strong> {Data.object[0].minor} {Data.object[0].dminor}
                         </p>
                     </div>
                 </div>

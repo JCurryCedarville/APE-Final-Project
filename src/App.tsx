@@ -5,6 +5,7 @@ import { FacultyPage } from './components/faculty-page/faculty-page';
 import { useEffect, useState } from 'react';
 
 function App() {
+    const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
     function onFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
 
@@ -41,13 +42,13 @@ function App() {
                 window.document.getElementById("Login")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Planner")?.setAttribute("style", "display: block;");
                 var username = window.document.getElementById("name")?.innerText;
-                const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
-                useEffect(() => {
+                
+                
                 fetch('http://localhost:4000/users/')
                 .then(res => res.json())
                 .then(data => setData(data))  
                 .catch(err => console.log(err));
-                }, []);
+                
                 Data.object.map((val, key) => {
                     if (val.name == username){
                         window.document.getElementById("planId")?.setAttribute("value", val.planId);
@@ -63,7 +64,7 @@ function App() {
     }
     return (
         <div className={styles.App}>
-            <div id="planId" style={{display: "none"}}></div>
+            <input id="planId" style={{display: "none"}} value="420"></input>
             <div id="Login" >
                 <div className={styles.LoginOrginizer}>
                 <h1>Login:</h1>
