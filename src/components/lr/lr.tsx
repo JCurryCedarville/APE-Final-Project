@@ -2,6 +2,7 @@ import styles from './lr.module.scss';
 import classNames from 'classnames';
 import { Console } from 'console';
 import { useEffect, useState } from 'react';
+import myFunction from './myFunction';
 
 export interface LRProps {
     className?: string;
@@ -21,11 +22,13 @@ export const LR = ({ className }: LRProps) => {
     .then(data => setData(data))  
     .catch(err => console.log(err));
     };
+    
     return (
         <div className={classNames(styles.root, className)} onFocusCapture={updateData}>
             <button onClick={updateData}>Click Me!</button>
-            <table className={styles.CatalogTable}>
-                <tr>
+            <input type="text" id="myInput" onKeyUp={myFunction} placeholder="Search by ID..."></input>
+            <table id="myTable" className={styles.CatalogTable}>
+                <tr className="header">
                     <th>Course ID</th>
                     <th>Course Name</th>
                     <th>Description</th>

@@ -36,9 +36,9 @@ export const UR = ({ className }: URProps) => {
     years.sort();
 
     return (
-        <div className={classNames(styles.root, className)} onFocusCapture={updateData}>
+        <div className={classNames(styles.root, className)} onFocus={updateData}>
             <div className={styles.GridSchedule}>
-                <div className={styles.Semester} id={"Transfered"}>
+                <div className={styles.Semester}>
                     <h1>Transfered Classes</h1>
                     <ul>
                     {Data.object.map((course, key) => {
@@ -53,10 +53,10 @@ export const UR = ({ className }: URProps) => {
                     })}
                     </ul>
                 </div>
-                {years.map((year, key) => {
+                {years.map((year) => {
                     if(year === years[0]){
                         return(
-                            <div className={styles.Semester} id={"Fall " + year}>
+                            <div className={styles.Semester}>
                                 <h1>Fall {year}</h1>
                                 <ul>
                                 {Data.object.map((course, key) => {
@@ -75,7 +75,7 @@ export const UR = ({ className }: URProps) => {
                     }
                     else if(year === years[years.length-1]){
                         return(
-                            <div className={styles.Semester} id={"Spring " + year}>
+                            <div className={styles.Semester}>
                                 <h1>Spring {year}</h1>
                                 <ul>
                                 {Data.object.map((course, key) => {
@@ -95,7 +95,7 @@ export const UR = ({ className }: URProps) => {
                     else{
                         return(
                             <>
-                                <div className={styles.Semester} id={"Spring " + year}>
+                                <div className={styles.Semester}>
                                     <h1>Spring {year}</h1>
                                     <ul>
                                 {Data.object.map((course, key) => {
@@ -110,7 +110,7 @@ export const UR = ({ className }: URProps) => {
                                 })}
                                 </ul>
                                 </div>
-                                <div className={styles.Semester} id={"Summer " + year}>
+                                <div className={styles.Semester}>
                                     <h1>Summer {year}</h1>
                                     <ul>
                                 {Data.object.map((course, key) => {
@@ -125,7 +125,7 @@ export const UR = ({ className }: URProps) => {
                                 })}
                                 </ul>
                                 </div>
-                                <div className={styles.Semester} id={"Fall " + year}>
+                                <div className={styles.Semester}>
                                     <h1>Fall {year}</h1>
                                     <ul>
                                 {Data.object.map((course, key) => {
@@ -151,11 +151,7 @@ export const UR = ({ className }: URProps) => {
                 <label>
                     Notes: <textarea name="notes" id='notes' onBlur={SaveNotes}></textarea>
                 </label>
-            </div>
+                </div>
         </div>
     );
-
-    
-
-
 };
