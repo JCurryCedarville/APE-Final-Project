@@ -1,6 +1,7 @@
 import styles from './header.module.scss';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import changePid from './changePid';
 
 export interface HeaderProps {
     className?: string;
@@ -12,6 +13,7 @@ export interface HeaderProps {
  */
 export const Header = ({ className }: HeaderProps) => {
     const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  major: "",  dmajor: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
+    const [Plans, setPlans] = useState({object: [{id: "", user: "", name: ""}]});
     var planState = document.getElementById('planId');
     function updateData(){
     fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
@@ -19,6 +21,13 @@ export const Header = ({ className }: HeaderProps) => {
         .then(data => setData(data))  
         .catch(err => console.log(err));
     }
+    function updatePlans(){
+    fetch('http://localhost:4000/plans/name=' + Data.object[0].user)
+        .then(res => res.json())
+        .then(plans => setPlans(plans))  
+        .catch(err => console.log(err));
+    }
+    
     return (
         <div className={classNames(styles.root, className)} >
             <div className={styles.Header} onFocusCapture={updateData}>
@@ -58,10 +67,11 @@ export const Header = ({ className }: HeaderProps) => {
                 </div>
                 <div className={styles.headerButtons}>
                     <div>
-                        <select id="plans" className={styles.ChoosePlan}>
+                        <select id="plans" className={styles.ChoosePlan} onClick={updatePlans} onChange={changePid}>
                             <option>Choose Plan:</option>
-                            <option>Default Plan</option>
-                            <option>Other Plan</option>
+                            {Plans.object.map((plan, key) => {
+                                return(<option value={plan.id}>{plan.name}</option>)
+                            })}
                         </select>
                     </div>
                 </div>
