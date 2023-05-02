@@ -3,7 +3,7 @@ var db = require('../db/database.js');
 var router = express.Router();
 
 /*Get plan item*/
-router.get('/:planId', function(req, res, next){
+router.get('/id=:planId', function(req, res, next){
   var plansQuery = "SELECT * FROM `the_plan` where id = " + req.params.planId;
   db.query(plansQuery, (err, rows) => {
 
