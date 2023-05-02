@@ -74,9 +74,9 @@ export const UL = ({ className }: ULProps) => {
   function updateData(){
     var Mj = document.getElementById('MajorName')?.getAttribute('value');
     var Mn = document.getElementById('MinorName')?.getAttribute('value')
-    fetch('http://localhost:4000/major=' + Mj).then(res => res.json()).then(data => setMajorData(data)).catch(err => console.log(err));
-    fetch('http://localhost:4000/minor=' + Mn).then(res => res.json()).then(data => setMinorData(data)).catch(err => console.log(err));
-    fetch('http://localhost:4000/geneds').then(res => res.json()).then(data => setGenEdData(data)).catch(err => console.log(err));
+    fetch('http://localhost:4000/reqs/major=' + Mj).then(res => res.json()).then(data => setMajorData(data)).catch(err => console.log(err));
+    fetch('http://localhost:4000/reqs/minor=' + Mn).then(res => res.json()).then(data => setMinorData(data)).catch(err => console.log(err));
+    fetch('http://localhost:4000/reqs/geneds').then(res => res.json()).then(data => setGenEdData(data)).catch(err => console.log(err));
     var accordionItems = [
       {
         title: {Mj} + ' Requirements',
@@ -114,13 +114,20 @@ export const UL = ({ className }: ULProps) => {
           </ul>          
           )
       }
-    ]
+    ];
+    document.getElementById('ACC')?.replaceWith(
+        <Accordion items={accordionItems} /> as unknown as Node
+      );
+    return (
+      <div id="ACC" className={classNames(styles.root, className)}>
+            
+        </div>
+    )
   };
     return (
-        <div className={classNames(styles.root, className)}>
-            <div className="container">
-            <Accordion items={accordionItems} />
-            </div>
+        <div id="ACC" className={classNames(styles.root, className)} onFocusCapture={updateData}>
+            <button>Hi there</button>
+            
         </div>
     );
 };
