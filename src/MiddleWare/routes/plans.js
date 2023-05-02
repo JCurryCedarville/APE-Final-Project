@@ -8,7 +8,7 @@ router.get('/id=:planId', function(req, res, next){
   db.query(plansQuery, (err, rows) => {
 
     if(err){
-      console.log("plan get failed");
+      console.log("plan by id get failed");
       console.log(err);
       return;
     }
@@ -25,7 +25,7 @@ router.get('/name=:name', function(req, res, next){
     db.query(plansQuery, (err, rows) => {
   
       if(err){
-        console.log("plan get failed");
+        console.log("plan by nmae get failed");
         console.log(err);
         return;
       }

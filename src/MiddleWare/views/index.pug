@@ -69,6 +69,43 @@ block content
               //td
             //tr
         //tbody
+        tbody 
+            tr 
+              td
+                - var url = "/reqs/major=Computer Science" 
+                form(action=url method="GET")
+                  .form
+                    input(type= "hidden")
+                    input(type= "submit" value = "To Major Reqs")
+                //form
+              //td
+            //tr
+        //tbody
+        //tbody
+        tbody 
+            tr 
+              td
+                - var url = "/reqs/minor=Math" 
+                form(action=url method="GET")
+                  .form
+                    input(type= "hidden")
+                    input(type= "submit" value = "To Minor Reqs")
+                //form
+              //td
+            //tr
+        //tbody
+        tbody 
+            tr 
+              td
+                - var url = "/reqs/geneds" 
+                form(action=url method="GET")
+                  .form
+                    input(type= "hidden")
+                    input(type= "submit" value = "To Gened Reqs")
+                //form
+              //td
+            //tr
+        //tbody
       //table
   //main
                 
