@@ -1,5 +1,6 @@
 import styles from './lr.module.scss';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 export interface LRProps {
     className?: string;
@@ -9,25 +10,17 @@ export interface LRProps {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-lrs-and-templates
  */
-const data = [
-    { name: 'Math', id: 19, credits: 3, desc: 'sad' },
-    { name: 'Art', id: 13, credits: 3, desc: 'fun' },
-    { name: 'Chem', id: 25, credits: 3, desc: 'hard' },
-    { name: 'Math', id: 19, credits: 3, desc: 'sad' },
-    { name: 'Art', id: 13, credits: 3, desc: 'fun' },
-    { name: 'Chem', id: 25, credits: 3, desc: 'hard' },
-    { name: 'Math', id: 19, credits: 3, desc: 'sad' },
-    { name: 'Art', id: 13, credits: 3, desc: 'fun' },
-    { name: 'Chem', id: 25, credits: 3, desc: 'hard' },
-    { name: 'Math', id: 19, credits: 3, desc: 'sad' },
-    { name: 'Art', id: 13, credits: 3, desc: 'fun' },
-    { name: 'Chem', id: 25, credits: 3, desc: 'hard' },
-    { name: 'Math', id: 19, credits: 3, desc: 'sad' },
-    { name: 'Art', id: 13, credits: 3, desc: 'fun' },
-    { name: 'Chem', id: 25, credits: 3, desc: 'hard' },
-];
+
 
 export const LR = ({ className }: LRProps) => {
+    const [Data, setData] = useState({object: [{id: "", name: "", desc: "", credits: ""}]});
+
+    useEffect(() => {
+    fetch('http://localhost:4000/courses/year=' + document.getElementById('yearNum')?.getAttribute('value'))
+    .then(res => res.json())
+    .then(data => setData(data))  
+    .catch(err => console.log(err));
+    }, []);
     return (
         <div className={classNames(styles.root, className)}>
             <table className={styles.CatalogTable}>
@@ -37,7 +30,7 @@ export const LR = ({ className }: LRProps) => {
                     <th>Description</th>
                     <th>Credits</th>
                 </tr>
-                {data.map((val, key) => {
+                {Data.object.map((val, key) => {
                     return (
                         <tr key={key}>
                             <td>{val.id}</td>

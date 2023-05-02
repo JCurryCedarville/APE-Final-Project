@@ -18,7 +18,7 @@ export const UR = ({ className }: URProps) => {
     const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
 
     useEffect(() => {
-    fetch('http://localhost:4000/plan/' + document.getElementById('planId')?.getAttribute('value'))
+    fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
     .then(res => res.json())
     .then(data => setData(data))  
     .catch(err => console.log(err));
