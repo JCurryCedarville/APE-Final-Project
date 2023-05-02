@@ -8,7 +8,8 @@ var cors = require('cors');//cors is a node.js package for providing a Connect/E
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var plansRouter = require('./routes/plans')
+var plansRouter = require('./routes/plans');
+var coursesRouter = require('./routes/courses');
 
 var app = express();
 app.use(cors());
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/plans', plansRouter);
+app.use('/courses', coursesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

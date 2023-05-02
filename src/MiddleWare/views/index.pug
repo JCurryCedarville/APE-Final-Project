@@ -28,7 +28,43 @@ block content
                 form(action=url method="GET")
                   .form
                     input(type= "hidden")
-                    input(type= "submit" value = "To Plans")
+                    input(type= "submit" value = "To Id Plans")
+                //form
+              //td
+            //tr
+        //tbody
+        tbody 
+            tr 
+              td
+                - var url = "/plans/name=chris" 
+                form(action=url method="GET")
+                  .form
+                    input(type= "hidden")
+                    input(type= "submit" value = "To User Plans")
+                //form
+              //td
+            //tr
+        //tbody
+        tbody 
+            tr 
+              td
+                - var url = "/courses/year=2022" 
+                form(action=url method="GET")
+                  .form
+                    input(type= "hidden")
+                    input(type= "submit" value = "To catCourses")
+                //form
+              //td
+            //tr
+        //tbody
+        tbody 
+            tr 
+              td
+                - var url = "/courses/pid=420" 
+                form(action=url method="GET")
+                  .form
+                    input(type= "hidden")
+                    input(type= "submit" value = "To plannedCourses")
                 //form
               //td
             //tr
