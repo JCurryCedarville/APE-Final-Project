@@ -35,24 +35,41 @@ export const UR = ({ className }: URProps) => {
     });
     years.sort();
 
-    function populateMonthbox(){
-        Data.object.forEach(function(course){
-            var text = "<p>" + course.course_id + " " + course.name + " " + course.credits
-            document.getElementById(course.term + " " + course.year)?.append(text)
-        })
-    }
-
     return (
         <div className={classNames(styles.root, className)} onFocusCapture={updateData}>
             <div className={styles.GridSchedule}>
                 <div className={styles.Semester} id={"Transfered"}>
                     <h1>Transfered Classes</h1>
+                    <ul>
+                    {Data.object.map((course, key) => {
+                        if(course.term === "Transfer"){
+                            return(
+                                <li>{course.course_id} {course.name}</li>
+                            );
+                        }
+                        else{
+                            return(null);
+                        }
+                    })}
+                    </ul>
                 </div>
                 {years.map((year, key) => {
                     if(year === years[0]){
                         return(
                             <div className={styles.Semester} id={"Fall " + year}>
                                 <h1>Fall {year}</h1>
+                                <ul>
+                                {Data.object.map((course, key) => {
+                                    if(course.year === year && course.term === "Fall"){
+                                        return(
+                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                        );
+                                    }
+                                    else{
+                                        return(null);
+                                    }
+                                })}
+                                </ul>
                             </div>
                         )
                     }
@@ -60,6 +77,18 @@ export const UR = ({ className }: URProps) => {
                         return(
                             <div className={styles.Semester} id={"Spring " + year}>
                                 <h1>Spring {year}</h1>
+                                <ul>
+                                {Data.object.map((course, key) => {
+                                    if(course.year === year && course.term === "Spring"){
+                                        return(
+                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                        );
+                                    }
+                                    else{
+                                        return(null);
+                                    }
+                                })}
+                                </ul>
                             </div>
                         )
                     }
@@ -68,25 +97,53 @@ export const UR = ({ className }: URProps) => {
                             <>
                                 <div className={styles.Semester} id={"Spring " + year}>
                                     <h1>Spring {year}</h1>
+                                    <ul>
+                                {Data.object.map((course, key) => {
+                                    if(course.year === year && course.term === "Spring"){
+                                        return(
+                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                        );
+                                    }
+                                    else{
+                                        return(null);
+                                    }
+                                })}
+                                </ul>
                                 </div>
                                 <div className={styles.Semester} id={"Summer " + year}>
                                     <h1>Summer {year}</h1>
+                                    <ul>
+                                {Data.object.map((course, key) => {
+                                    if(course.year === year && course.term === "Summer"){
+                                        return(
+                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                        );
+                                    }
+                                    else{
+                                        return(null);
+                                    }
+                                })}
+                                </ul>
                                 </div>
                                 <div className={styles.Semester} id={"Fall " + year}>
                                     <h1>Fall {year}</h1>
+                                    <ul>
+                                {Data.object.map((course, key) => {
+                                    if(course.year === year && course.term === "Fall"){
+                                        return(
+                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                        );
+                                    }
+                                    else{
+                                        return(null);
+                                    }
+                                })}
+                                </ul>
                                 </div>
                             </>
                         );
                     }
                     
-                })}
-
-                {Data.object.map((course, key) => {
-                    var text = "<p>" + course.course_id + " " + course.name + " " + course.credits + "</p>"
-                    document.getElementById(course.term + " " + course.year)?.append(text)
-                    return(
-                        null
-                    )
                 })}
 
             </div>
