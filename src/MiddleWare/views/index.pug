@@ -1,48 +1,37 @@
 extends layout
 
 block content
-  var h1Title = "Available Catalog Years"
+  var h1Title = "SQL Queries"
   #main
     h1 h1Title 
     #mainTable 
-      form(action="/users" method="GET")
-        .form
-          input(type= "submit" value= "Add User")
-          input(type= "submit" value= "Edit Catalog")
-      //form
-      //- table 
-      //-   thead 
-      //-     th userName
-      //-     th userPass
-      //-     th userType
-      //-   //thead
-      //-   tbody 
-      //-     each user in users
-      //-       tr 
-      //-         td= user.name
-      //-         td= user.password
-      //-         td= user.type
-      //-       //tr
-      //-     //each
-      //-   //tbody
-      //- //table
-
       table
         thead
-          th Catalog 
+          th SQL Query Home 
         //thead
         tbody 
             tr 
               td
-                - var url = "/catalog" 
+                - var url = "/users" 
                 form(action=url method="GET")
                   .form
-                    input(type= "hidden" name= year)
-                    input(type= "submit" value= "To Catalog")
+                    input(type= "hidden")
+                    input(type= "submit" value= "To Users")
                 //form
               //td
             //tr
-          
+        //tbody
+        tbody 
+            tr 
+              td
+                - var url = "/plans/" + "420" 
+                form(action=url method="GET")
+                  .form
+                    input(type= "hidden")
+                    input(type= "submit" value = "To Plans")
+                //form
+              //td
+            //tr
         //tbody
       //table
   //main
