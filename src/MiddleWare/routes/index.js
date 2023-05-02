@@ -6,8 +6,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 var catalogList = [];
 
-  var sql = "select * from the_catalog";
-  db.query(sql, (err, rows) => {
+  var catalogQuery = "select * from the_catalog";
+  db.query(catalogQuery, (err, rows) => {
 
     if(err){
       console.log("select from the_catalog failed");
@@ -17,6 +17,19 @@ var catalogList = [];
     //render index.pug page using array
     res.render('index', {catalogs: rows});
   });
+
+  var userQuery = "select * from the_user";
+  db.query(userQuery, (err, rows) => {
+    if(err){
+      console.log("select from the_user failed");
+      console.log(err);
+      return;
+    }
+    //res.render('users', {users: rows});
+  });
+
 });
+
+
 
 module.exports = router;
