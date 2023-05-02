@@ -1,5 +1,7 @@
 .root {
   display: block;
+  overflow: scroll;
+  max-height: 400px;
 }
 .CatalogTable {
   font-size: auto;
