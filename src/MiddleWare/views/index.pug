@@ -30,29 +30,19 @@ block content
       table
         thead
           th Catalog 
-          th Edit?
-          th Delete?
         //thead
         tbody 
-          each catalog in catalogs 
             tr 
-              td= catalog.year
               td
-                - var url = "/catalog/edit/" + catalog.year 
+                - var url = "/catalog" 
                 form(action=url method="GET")
                   .form
-                    input(type= "hidden" name= year value= catalog.year)
-                    input(type= "submit" value= "Edit Catalog")
-                //form
-              td 
-                - var url = "/catalog/delete/" + catalog.year 
-                form(action=url method="POST")
-                  .form 
-                    input(type= "submit" value="Delete")
+                    input(type= "hidden" name= year)
+                    input(type= "submit" value= "To Catalog")
                 //form
               //td
             //tr
-          //each
+          
         //tbody
       //table
   //main
