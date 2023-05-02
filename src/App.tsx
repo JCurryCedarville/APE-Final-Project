@@ -4,7 +4,7 @@ import { FacultyPage } from './components/faculty-page/faculty-page';
 import { useEffect, useState } from 'react';
 
 function App() {
-    const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
+    const [UserData, setUserData] = useState({object: [{name: "", password: "", type: "", planId: "" }]});
     const [planId, setPlan] = useState(0);
     function onFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -28,17 +28,20 @@ function App() {
         else if ((formData.name === "Chris" || formData.name === "chris") && formData.password === "lafafafa") {
             Show("PlannerPage");
         }
+        else{
+            alert("Incorrect username or password");
+        }
 
         function Show(page:string){ 
             //get the list of users
             fetch('http://localhost:4000/users/')
             .then(res => res.json())
-            .then(data => setData(data))  
+            .then(data => setUserData(data))  
             .catch(err => console.log(err));
             //set plan to logeed in user
-            Data.object.map((val, key) => {
+            UserData.object.map((val, key) => {
                 if (val.name === FormData.name){
-                    setPlan(val.planId as unknown as number);
+                    document.getElementById("planId")?.setAttribute("value", val.planId);
                 }
                 return null;
             }
@@ -64,13 +67,9 @@ function App() {
             }
         }
     }
-    
-    useEffect(() => {
-        setPlan(planId)
-    }, [planId]);
     return (
         <div className={styles.App}>
-            <input id="planId" style={{display: "none"}} value={planId}/>
+            <input id="planId" style={{display: "none"}} value=""/>
             <div id="Login" >
                 <div className={styles.LoginOrginizer}>
                 <h1>Login:</h1>

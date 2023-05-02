@@ -32,7 +32,7 @@ function AccordionItem({
         </button>
       </h2>
       <div className="accordion-item-container" style={{ height }}>
-        <div ref={contentRef} className="accordion-item-content">
+        <div ref={contentRef} className="accordion-item-content" draggable>
           {data.content}
         </div>
       </div>

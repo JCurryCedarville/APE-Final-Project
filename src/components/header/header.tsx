@@ -12,14 +12,17 @@ export interface HeaderProps {
  */
 export const Header = ({ className }: HeaderProps) => {
     const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  major: "",  dmajor: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
-    var planState = document.getElementById('planId')
+    var planState = document.getElementById('planId');
     useEffect(() => {
-    fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
-    .then(res => res.json())
-    .then(data => setData(data))  
-    .catch(err => console.log(err));
-    }, [planState]);
-    return (
+        if (document.getElementById('planId')?.getAttribute('value') !== ""){
+            fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
+            .then(res => res.json())
+            .then(data => setData(data))  
+            .catch(err => console.log(err));
+        }
+    });
+    if (Data.object[0] !== undefined) {
+        return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.Header}>
                 <div className={classNames(styles.HeaderSelect, styles.headerInfo)}>
@@ -67,5 +70,7 @@ export const Header = ({ className }: HeaderProps) => {
                 </div>
             </div>
         </div>
-    );
+    );}else{
+        return (<div><h1>NO USER</h1></div>);
+    }
 };
