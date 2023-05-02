@@ -1,6 +1,6 @@
 import styles from './ur.module.scss';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export interface URProps {
     className?: string;
@@ -20,14 +20,6 @@ export const UR = ({ className }: URProps) => {
     }
     const [Data, setData] = useState({object: [{course_id: "string", name: "string", term: "string", year: "string", credits: "string" }]});
 
-    // useEffect(() => {
-    //     if (document.getElementById('planId')?.getAttribute('value') !== "0") {  
-    //         fetch('http://localhost:4000/courses/pid=' + document.getElementById('planId')?.getAttribute('value'))
-    //         .then(res => res.json())
-    //         .then(data => setData(data))  
-    //         .catch(err => console.log(err));
-    //     }
-    // }, []);
     function updateData(){
         fetch('http://localhost:4000/courses/pid=' + document.getElementById('planId')?.getAttribute('value'))
             .then(res => res.json())
@@ -44,7 +36,7 @@ export const UR = ({ className }: URProps) => {
     years.sort();
 
     return (
-        <div className={classNames(styles.root, className)} onFocus={updateData}>
+        <div className={classNames(styles.root, className)} onFocusCapture={updateData}>
             <div className={styles.GridSchedule}>
                 <div className={styles.Semester}>
                     <h1>Transfered Classes</h1>

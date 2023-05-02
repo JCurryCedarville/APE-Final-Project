@@ -13,18 +13,15 @@ export interface HeaderProps {
 export const Header = ({ className }: HeaderProps) => {
     const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  major: "",  dmajor: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
     var planState = document.getElementById('planId');
-    useEffect(() => {
-        if (document.getElementById('planId')?.getAttribute('value') !== ""){
-            fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
-            .then(res => res.json())
-            .then(data => setData(data))  
-            .catch(err => console.log(err));
-        }
-    });
-    if (Data.object[0] !== undefined) {
-        return (
-        <div className={classNames(styles.root, className)}>
-            <div className={styles.Header}>
+    function updateData(){
+    fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
+        .then(res => res.json())
+        .then(data => setData(data))  
+        .catch(err => console.log(err));
+    }
+    return (
+        <div className={classNames(styles.root, className)} >
+            <div className={styles.Header} onFocusCapture={updateData}>
                 <div className={classNames(styles.HeaderSelect, styles.headerInfo)}>
                     <h1>R&amp;E APE</h1>
                     <p>
@@ -70,7 +67,5 @@ export const Header = ({ className }: HeaderProps) => {
                 </div>
             </div>
         </div>
-    );}else{
-        return (<div><h1>NO USER</h1></div>);
-    }
+    ); 
 };
