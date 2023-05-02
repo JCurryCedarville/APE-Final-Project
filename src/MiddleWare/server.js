@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');//cors is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 
 
 var indexRouter = require('./routes/index');
@@ -10,6 +11,7 @@ var usersRouter = require('./routes/users');
 var plansRouter = require('./routes/plans')
 
 var app = express();
+app.use(cors());
 
 
 // view engine setup
