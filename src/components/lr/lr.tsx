@@ -26,7 +26,7 @@ export const LR = ({ className }: LRProps) => {
     return (
         <div className={classNames(styles.root, className)} onFocusCapture={updateData}>
             <button onClick={updateData}>Click Me!</button>
-            <input type="text" id="myInput" onKeyUp={myFunction} placeholder="Search by ID..."></input>
+            <input type="text" id="myInput" onKeyUp={myFunction} placeholder="Search by ID or Name..."></input>
             <table id="myTable" className={styles.CatalogTable}>
                 <tr className="header">
                     <th>Course ID</th>

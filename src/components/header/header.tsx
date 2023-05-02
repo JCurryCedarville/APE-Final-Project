@@ -38,6 +38,7 @@ export const Header = ({ className }: HeaderProps) => {
                     </div>
 
                     <div id="infoMajor">
+                        <input type="hidden" id="MajorName" value={Data.object[0].major} />
                         <p className="infoP">
                             <strong>Major:</strong> {Data.object[0].major} {Data.object[0].dmajor}
                         </p>
@@ -51,6 +52,7 @@ export const Header = ({ className }: HeaderProps) => {
                     </div>
 
                     <div id="infoMinor">
+                        <input type="hidden" id="MinorName" value={Data.object[0].minor} />
                         <p className="infoP">
                             <strong>Minor:</strong> {Data.object[0].minor} {Data.object[0].dminor}
                         </p>
