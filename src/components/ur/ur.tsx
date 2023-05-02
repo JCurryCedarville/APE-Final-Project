@@ -35,23 +35,30 @@ export const UR = ({ className }: URProps) => {
     });
     years.sort();
 
+    function populateMonthbox(){
+        Data.object.forEach(function(course){
+            var text = "<p>" + course.course_id + " " + course.name + " " + course.credits
+            document.getElementById(course.term + " " + course.year)?.append(text)
+        })
+    }
+
     return (
         <div className={classNames(styles.root, className)} onFocusCapture={updateData}>
             <div className={styles.GridSchedule}>
-                <div className={styles.Semester}>
+                <div className={styles.Semester} id={"Transfered"}>
                     <h1>Transfered Classes</h1>
                 </div>
-                {years.map((year) => {
+                {years.map((year, key) => {
                     if(year === years[0]){
                         return(
-                            <div className={styles.Semester}>
+                            <div className={styles.Semester} id={"Fall " + year}>
                                 <h1>Fall {year}</h1>
                             </div>
                         )
                     }
                     else if(year === years[years.length-1]){
                         return(
-                            <div className={styles.Semester}>
+                            <div className={styles.Semester} id={"Spring " + year}>
                                 <h1>Spring {year}</h1>
                             </div>
                         )
@@ -59,13 +66,13 @@ export const UR = ({ className }: URProps) => {
                     else{
                         return(
                             <>
-                                <div className={styles.Semester}>
+                                <div className={styles.Semester} id={"Spring " + year}>
                                     <h1>Spring {year}</h1>
                                 </div>
-                                <div className={styles.Semester}>
+                                <div className={styles.Semester} id={"Summer " + year}>
                                     <h1>Summer {year}</h1>
                                 </div>
-                                <div className={styles.Semester}>
+                                <div className={styles.Semester} id={"Fall " + year}>
                                     <h1>Fall {year}</h1>
                                 </div>
                             </>
@@ -74,23 +81,24 @@ export const UR = ({ className }: URProps) => {
                     
                 })}
 
-                {/* {Data.object.map((val, key) => {
-                    return (
-                        <div className={styles.Semester} key={key} draggable>
-                            <td>{val.course_id}</td>
-                            <td>{val.name}</td>
-                            <td>{val.term}</td>
-                            <td>{val.year}</td>
-                            <td>{val.credits}</td>
-                        </div>
-                    );
-                })} */}
+                {Data.object.map((course, key) => {
+                    var text = "<p>" + course.course_id + " " + course.name + " " + course.credits + "</p>"
+                    document.getElementById(course.term + " " + course.year)?.append(text)
+                    return(
+                        null
+                    )
+                })}
+
             </div>
                 <div className={styles.Notes}>
                 <label>
                     Notes: <textarea name="notes" id='notes' onBlur={SaveNotes}></textarea>
                 </label>
-                </div>
+            </div>
         </div>
     );
+
+    
+
+
 };
