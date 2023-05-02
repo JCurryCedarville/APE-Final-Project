@@ -21,9 +21,29 @@ function App() {
             Show("FacultyPage");
             
         }
-        function Show(page){
+        else if (formData.name == "Joe" || formData.name == "joe" && formData.password == "mama") {
+            Show("PlannerPage");
+            
+        }
+        else if (formData.name == "Chris" || formData.name == "chris" && formData.password == "lafafafa") {
+            Show("PlannerPage");
+            
+        }
+        function Show(page:string){
             if (page == "FacultyPage"){
-                //document.getElementsByClassName()
+                window.document.getElementById("Faculty")?.setAttribute("style", "display: block;");
+                window.document.getElementById("Login")?.setAttribute("style", "display: none;");
+                window.document.getElementById("Planner")?.setAttribute("style", "display: none;");
+            }
+            else if (page == "PlannerPage"){
+                window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
+                window.document.getElementById("Login")?.setAttribute("style", "display: none;");
+                window.document.getElementById("Planner")?.setAttribute("style", "display: block;");
+            }
+            else if (page == "LoginPage"){
+                window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
+                window.document.getElementById("Login")?.setAttribute("style", "display: block;");
+                window.document.getElementById("Planner")?.setAttribute("style", "display: none;");
             }
         }
         //need to change this to the faculty page
@@ -41,7 +61,8 @@ function App() {
     }
     return (
         <div className={styles.App}>
-            <div className={styles.LoginOrginizer}>
+            <div id="Login" >
+                <div className={styles.LoginOrginizer}>
                 <h1>Login:</h1>
                 <form className={styles.LoginForm} onSubmit={onFormSubmit}>
                     <label>Name:</label>
@@ -55,18 +76,16 @@ function App() {
                     <br />
                     <button>Submit</button> 
                 </form>
+                </div>
             </div>
-            <div className={styles.FacultyPage}>
+            <div id="Faculty" className={styles.FacultyPage}>
                 <FacultyPage />
             </div>
-            <div className={styles.Planner}>
+            <div id="Planner" className={styles.Planner}>
                 <Planner />
             </div>
         </div>       
     );
-    // <div className={styles.App}>
-        //     <div className={styles.LoginPage}>
-        //         <LandingLogin />
 }
 
 export default App;
