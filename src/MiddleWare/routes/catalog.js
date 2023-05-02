@@ -4,7 +4,7 @@ var router = express.Router();
 
 /*Edit catalog item*/
 router.get('/', function(req, res, next){
-  var catalogQuery = "select * from the_user";
+  var catalogQuery = "select U.name, U.password, U.type, P.id as planId from the_user as U inner join the_plan as P where P.is_default = 1 and U.name = P.user";
   db.query(catalogQuery, (err, rows) => {
 
     if(err){
