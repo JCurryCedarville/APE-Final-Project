@@ -1,5 +1,6 @@
 import styles from './header.module.scss';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 export interface HeaderProps {
     className?: string;
@@ -10,6 +11,14 @@ export interface HeaderProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-headers-and-templates
  */
 export const Header = ({ className }: HeaderProps) => {
+    const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  majior: "",  dmajior: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
+
+    useEffect(() => {
+    fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
+    .then(res => res.json())
+    .then(data => setData(data))  
+    .catch(err => console.log(err));
+    }, []);
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.Header}>
@@ -24,25 +33,25 @@ export const Header = ({ className }: HeaderProps) => {
                 <div className={classNames('studentInfo', styles.studentInfo)}>
                     <div id="infoStudent">
                         <p className="infoP">
-                            <strong>Student:</strong> Chris
+                            <strong>Student:</strong> {Data.object[0].user}
                         </p>
                     </div>
 
                     <div id="infoMajor">
                         <p className="infoP">
-                            <strong>Major:</strong> Computer Science
+                            <strong>Major:</strong> {Data.object[0].majior + Data.object[0].dmajior}
                         </p>
                     </div>
 
                     <div id="infoCatalog">
                         <p className="infoP">
-                            <strong>Catalog:</strong> 2022
+                            <strong>Catalog:</strong> {Data.object[0].cat_year}
                         </p>
                     </div>
 
                     <div id="infoMinor">
                         <p className="infoP">
-                            <strong>Minor:</strong> Bible
+                            <strong>Minor:</strong> {Data.object[0].minor + Data.object[0].dminor}
                         </p>
                     </div>
                 </div>
