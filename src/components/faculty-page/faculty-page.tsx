@@ -11,15 +11,19 @@ export interface FacultyPageProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-faculty-pages-and-templates
  */
  
-var [data, setData] = useState([]);
-
-useEffect(() => {
-    fetch('/catalog/')
-    .then(res => res.json())
-    .then(data => setData(data))
-}, []);
-//var url = 'http://localhost:4000/catalog/';
+    
 export const FacultyPage = ({ className }: FacultyPageProps) => {
+
+    const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
+
+    useEffect(() => {
+    fetch('http://localhost:4000/catalog/')
+    .then(res => res.json())
+    .then(data => setData(data))  
+    .catch(err => console.log(err));
+    //console.log(Data);
+    //var url = 'http://localhost:4000/catalog/';
+    }, []);
     return (
         <div className={classNames(styles.root, className)}>
             <h1>Welcome Faculty!</h1>
@@ -27,22 +31,22 @@ export const FacultyPage = ({ className }: FacultyPageProps) => {
             <table className={styles.CatalogTable}>
                 <thead>
                     <th>Student Name</th>
-                    <th>Total Credits</th>
-                    <th>Major</th>
+                    <th>Password</th>
+                    <th>Type</th>
                     <th>Default Plan</th>
                 </thead>
-                {data.map((val, key) => {
+                {Data.object.map((val, key) => {
                     return (
                         <tbody key={key}>
-                            {/* <td>{val.name}</td>
-                            <td>{val.id}</td>
-                            <td>{val.mjor}</td> */}
-                            {/* <td>
-                                <form action={url} method='GET'>
-                                    <input type="hidden" name ="plan" value={val.id} />
-                                    <button type='submit'>Clicks</button>
+                            <td>{val.name}</td>
+                            <td>{val.password}</td>
+                            <td>{val.type}</td>
+                            <td>
+                                <form action={""} method='GET'>
+                                    <input type="hidden" name ="plan" value={val.planId} />
+                                    <button type='submit'>Click Me!</button>
                                 </form>
-                            </td> */}
+                            </td>
                         </tbody>
                     );
                 })}
