@@ -1,11 +1,11 @@
 import styles from './App.module.scss';
-import { LandingLogin } from './components/landing-login/landing-login';
 import { Planner } from './components/planner/planner';
 import { FacultyPage } from './components/faculty-page/faculty-page';
 import { useEffect, useState } from 'react';
 
 function App() {
     const [Data, setData] = useState({object: [{name: "string", password: "string", type: "string", planId: "string" }]});
+    const [planId, setPlan] = useState(0);
     function onFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
 
@@ -14,57 +14,63 @@ function App() {
         function isInputNamedElement(e: Element): e is HTMLInputElement & { name: string } {
             return 'value' in e && 'name' in e;
         }
-
         Array.from(e.currentTarget.elements).filter(isInputNamedElement).forEach((field) => {
             if (!field.name) return;
             formData[field.name] = field.value;
         });
-        if (formData.name == "Josh" || formData.name == "josh" && formData.password == "1234") {
+
+        if ((formData.name === "Josh" || formData.name === "josh") && formData.password === "1234") {
             Show("FacultyPage");
-            
         }
-        else if (formData.name == "Joe" || formData.name == "joe" && formData.password == "mama") {
+        else if ((formData.name === "Joe" || formData.name === "joe") && formData.password === "mama") {
             Show("PlannerPage");
-            
         }
-        else if (formData.name == "Chris" || formData.name == "chris" && formData.password == "lafafafa") {
+        else if ((formData.name === "Chris" || formData.name === "chris") && formData.password === "lafafafa") {
             Show("PlannerPage");
-            
         }
-        function Show(page:string){
-            if (page == "FacultyPage"){
+
+        function Show(page:string){ 
+            //get the list of users
+            fetch('http://localhost:4000/users/')
+            .then(res => res.json())
+            .then(data => setData(data))  
+            .catch(err => console.log(err));
+            //set plan to logeed in user
+            Data.object.map((val, key) => {
+                if (val.name === FormData.name){
+                    setPlan(val.planId as unknown as number);
+                }
+                return null;
+            }
+
+            );
+            if (page === "FacultyPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: block;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Planner")?.setAttribute("style", "display: none;");
             }
-            else if (page == "PlannerPage"){
+            else if (page === "PlannerPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Planner")?.setAttribute("style", "display: block;");
-                var username = window.document.getElementById("name")?.innerText;
+
                 
                 
-                fetch('http://localhost:4000/users/')
-                .then(res => res.json())
-                .then(data => setData(data))  
-                .catch(err => console.log(err));
-                
-                Data.object.map((val, key) => {
-                    if (val.name == username){
-                        window.document.getElementById("planId")?.setAttribute("value", val.planId);
-                    }
-                }
-                );}
-            else if (page == "LoginPage"){
+            }
+            else if (page === "LoginPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: block;");
                 window.document.getElementById("Planner")?.setAttribute("style", "display: none;");
             }
         }
     }
+    
+    useEffect(() => {
+        setPlan(planId)
+    }, [planId]);
     return (
         <div className={styles.App}>
-            <input id="planId" style={{display: "none"}} value="420"></input>
+            <input id="planId" style={{display: "none"}} value={planId}/>
             <div id="Login" >
                 <div className={styles.LoginOrginizer}>
                 <h1>Login:</h1>

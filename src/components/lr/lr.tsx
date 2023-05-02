@@ -14,13 +14,14 @@ export interface LRProps {
 
 export const LR = ({ className }: LRProps) => {
     const [Data, setData] = useState({object: [{id: "", name: "", desc: "", credits: ""}]});
+    var planState = document.getElementById('planId');
     useEffect(() => {
-    if (document.getElementById('yearNum')?.getAttribute('value') == ""){ 
+    if (document.getElementById('yearNum')?.getAttribute('value') !== ""){ 
     fetch('http://localhost:4000/courses/year=' + document.getElementById('yearNum')?.getAttribute('value'))
     .then(res => res.json())
     .then(data => setData(data))  
     .catch(err => console.log(err));
-    }}, []);
+    }}, [planState]);
     return (
         <div className={classNames(styles.root, className)}>
             <table className={styles.CatalogTable}>

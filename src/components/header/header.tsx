@@ -12,13 +12,13 @@ export interface HeaderProps {
  */
 export const Header = ({ className }: HeaderProps) => {
     const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  major: "",  dmajor: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
-
+    var planState = document.getElementById('planId')
     useEffect(() => {
     fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
     .then(res => res.json())
     .then(data => setData(data))  
     .catch(err => console.log(err));
-    }, []);
+    }, [planState]);
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.Header}>
