@@ -48,10 +48,7 @@ export const FacultyPage = ({ className }: FacultyPageProps) => {
                             <td>{val.password}</td>
                             <td>{val.type}</td>
                             <td>
-                                <form action={""} method='GET'>
-                                    <input type="hidden" name ="plan" value={val.planId} />
-                                    <button type='submit'>Click Me!</button>
-                                </form>
+                            <button  onClick={PlanChose} value={val.planId}>Click Me!</button>
                             </td>
                         </tbody>
                     );
