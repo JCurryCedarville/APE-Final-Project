@@ -1,4 +1,5 @@
-.root {display: block;
+.root {
+  display: block;
 }
 .Organizer {
   background-image: url('https://i.pinimg.com/736x/70/e1/b6/70e1b6a21728aa677acd08738518915b.jpg');
@@ -8,7 +9,9 @@
     'header'
     'UL UR'
     'BL BR';
-  grid-template-rows: 1fr 4fr;
+  grid-auto-flow: row;
+  grid-template-rows: 20% 80%;
+  max-height: 1000px;
 }
 .UL {
   display: grid;
@@ -21,8 +24,9 @@
 .MainBody {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 5px;
   overflow: scroll;
   flex-grow: 10;
+  max-height: 800px;
 }
