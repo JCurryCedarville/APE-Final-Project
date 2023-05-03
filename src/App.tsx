@@ -32,15 +32,21 @@ function App() {
             alert("Incorrect username or password");
         }
 
-        function Show(page:string){ 
-            //get the list of users
+        function updateUsers(){
             fetch('http://localhost:4000/users/')
             .then(res => res.json())
             .then(data => setUserData(data))  
             .catch(err => console.log(err));
+        }
+
+        function Show(page:string){ 
+            updateUsers()
             //set plan to logeed in user
+            console.log(UserData)
             UserData.object.map((val, key) => {
-                if (val.name === FormData.name){
+                console.log(val)
+                console.log(formData.name)
+                if (val.name === formData.name){
                     document.getElementById("planId")?.setAttribute("value", val.planId);
                 }else{
                     console.log("no match");
