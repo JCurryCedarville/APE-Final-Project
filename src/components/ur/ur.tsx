@@ -16,6 +16,12 @@ export const UR = ({ className }: URProps) => {
         var r = event.target;
         console.log(r.value);
     };
+    function LoadNotes() {
+        var Pid = document.getElementById('planId')?.getAttribute('value')
+        fetch('http://localhost:4000/plans/id=' + Pid)
+            .then(res => res.json())
+            .then(data => document.getElementById('notes')?.setAttribute('value', data.object[0].notes))
+    };
     function onUpdate(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
     }
@@ -169,9 +175,10 @@ export const UR = ({ className }: URProps) => {
                 })}
 
             </div>
-                <div className={styles.Notes}>
+                <div className={styles.Notes} onFocusCapture={LoadNotes}>
                 <label>
-                    Notes: <textarea name="notes" id='notes' onBlur={SaveNotes}></textarea>
+                    Notes: <textarea name="notes" id='notes' onBlur={SaveNotes}>
+                    </textarea>
                 </label>
                 </div>
         </div>
