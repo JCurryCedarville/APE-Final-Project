@@ -40,11 +40,7 @@ export const Header = ({ className }: HeaderProps) => {
     }
 
     function LogOut(){
-        window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
-        window.document.getElementById("Login")?.setAttribute("style", "display: block;");
-        window.document.getElementById("Planner")?.setAttribute("style", "display: none;");
-        document.getElementById("name")?.setAttribute('innerHTML', "");
-        document.getElementById("password")?.setAttribute('innerHTML', "");
+        window.location.reload()
     }
 
     
