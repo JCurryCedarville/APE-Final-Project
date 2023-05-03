@@ -30,7 +30,7 @@ export const Header = ({ className }: HeaderProps) => {
     
     return (
         <div className={classNames(styles.root, className)} >
-            <div className={styles.Header} onFocusCapture={updateData}>
+            <div className={styles.Header} onMouseEnter={updateData}>
                 <div className={classNames(styles.HeaderSelect, styles.headerInfo)}>
                     <h1>R&amp;E APE</h1>
                     <p>

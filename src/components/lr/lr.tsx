@@ -24,10 +24,10 @@ export const LR = ({ className }: LRProps) => {
     };
     
     return (
-        <div className={classNames(styles.root, className)} onFocusCapture={updateData}>
-            <button onClick={updateData}>Click Me!</button>
-            <input type="text" id="myInput" onKeyUp={myFunction} placeholder="Search by ID or Name..."></input>
-            <table id="myTable" className={styles.CatalogTable}>
+        <div>
+        <input type="text" id="myInput" className='myInput' onKeyUp={myFunction} placeholder="Search by ID or Name..."></input>
+        <div className={classNames(styles.root, className)} onMouseEnter={updateData}>
+            <table  className={styles.CatalogTable} id="myTable">
                 <tr className="header">
                     <th>Course ID</th>
                     <th>Course Name</th>
@@ -36,7 +36,7 @@ export const LR = ({ className }: LRProps) => {
                 </tr>
                 {Data.object.map((val, key) => {
                     return (
-                        <tr key={key}>
+                        <tr key={key} draggable>
                             <td>{val.id}</td>
                             <td>{val.name}</td>
                             <td>{val.desc}</td>
@@ -45,6 +45,7 @@ export const LR = ({ className }: LRProps) => {
                     );
                 })}
             </table>
+        </div>
         </div>
     );
 };

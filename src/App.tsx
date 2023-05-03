@@ -42,8 +42,10 @@ function App() {
             UserData.object.map((val, key) => {
                 if (val.name === FormData.name){
                     document.getElementById("planId")?.setAttribute("value", val.planId);
+                }else{
+                    console.log("no match");
                 }
-                return null;
+                return (<></>);
             }
 
             );

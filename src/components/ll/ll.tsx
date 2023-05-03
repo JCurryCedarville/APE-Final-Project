@@ -12,7 +12,7 @@ export interface LLProps {
 export const LL = ({ className }: LLProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <img src="https://wixplosives.github.io/codux-assets-storage/add-panel/image-placeholder.jpg" />
+            
         </div>
     );
 };

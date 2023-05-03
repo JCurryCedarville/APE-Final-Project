@@ -36,7 +36,7 @@ export const UR = ({ className }: URProps) => {
     years.sort();
 
     return (
-        <div className={classNames(styles.root, className)} onFocus={updateData}>
+        <div className={classNames(styles.root, className)} onMouseEnter={updateData}>
             <div className={styles.GridSchedule}>
                 <div className={styles.Semester}>
                     <h1>Transfered Classes</h1>
@@ -62,7 +62,7 @@ export const UR = ({ className }: URProps) => {
                                 {Data.object.map((course, key) => {
                                     if(course.year === year && course.term === "Fall"){
                                         return(
-                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                            <li draggable>{course.course_id} {course.name} {course.credits}</li>
                                         );
                                     }
                                     else{
