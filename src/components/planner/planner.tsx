@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { UL } from '../ul/ul';
 import { Header } from '../header/header';
 import { UR } from '../ur/ur';
-import Header_module from '../header/header.module.scss';
 import { LL } from '../ll/ll';
 import { LR } from '../lr/lr';
 

@@ -12,6 +12,7 @@ export interface URProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/configuration-for-urs-and-templates
  */
 export const UR = ({ className }: URProps) => {
+    
     function SaveNotes(event:any) {
         // var r = event.target;
         // fetch('http://localhost:4000/plans/notes'),
@@ -27,9 +28,6 @@ export const UR = ({ className }: URProps) => {
             .then(res => res.json())
             .then(data => document.getElementById('notes')?.setAttribute('value', data.object[0].notes))
     };
-    function onUpdate(e: React.SyntheticEvent<HTMLFormElement>) {
-        e.preventDefault();
-    }
     const [Data, setData] = useState({object: [{course_id: "string", name: "string", term: "string", year: "string", credits: "string" }]});
 
     function updateData(){
@@ -38,7 +36,7 @@ export const UR = ({ className }: URProps) => {
             .then(data => setData(data))  
             .catch(err => console.log(err));
     };
-
+    // eslint-disable-next-line
     var years:string[] = new Array();
     Data.object.forEach(function(course){
         if(!years.includes(course.year)){
@@ -61,9 +59,8 @@ export const UR = ({ className }: URProps) => {
                     <ul>
                     {Data.object.map((course, key) => {
                         if(course.term === "Transfer"){
-                            var obj = "course_id=" + course.course_id + " name=" + course.name + " term=" + course.term + " year=" + course.year + " credits=" + course.credits;
                             return(
-                                <li value={obj}>
+                                <li>
                                 {course.course_id} {course.name} + {course.credits}
                                 <button onClick={deleteParent}> -X- </button>
                                 </li>
