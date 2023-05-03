@@ -24,7 +24,7 @@
 .MainBody {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: 3fr 1fr;
   gap: 5px;
   overflow: scroll;
   flex-grow: 10;
