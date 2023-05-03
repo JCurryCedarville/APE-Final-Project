@@ -48,7 +48,7 @@ export const FacultyPage = ({ className }: FacultyPageProps) => {
                             <td>{val.password}</td>
                             <td>{val.type}</td>
                             <td>
-                            <button  onClick={PlanChose} value={val.planId}>Click Me!</button>
+                            <button name={val.name} onClick={PlanChose} value={val.planId}>Click Me!</button>
                             </td>
                         </tbody>
                     );
