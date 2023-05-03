@@ -1,6 +1,6 @@
 import styles from './header.module.scss';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import changePid from './changePid';
 
 export interface HeaderProps {
@@ -20,7 +20,7 @@ export const Header = ({ className }: HeaderProps) => {
         sum = sum + course.credits as unknown as Number;
     });
     
-    var planState = document.getElementById('planId');
+    
     function updateData(){
     fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
         .then(res => res.json())

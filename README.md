@@ -1,59 +1,42 @@
 <div align="center">  
     <img height="50"src="./src/assets/codux.svg">  
-    <h1>React App template for Codux</h1>
 </div>
 
-### A Visual IDE for React Projects
+hi
 
-Codux is an all-in-one visual development environment. Whether you’re starting a new app, creating components, or editing an existing project, every visual change you make reflects instantly in the code and vice versa. To learn more about Codux, visit our website - [https://www.codux.com/](https://www.codux.com/)
+to use, please keep all the installed packages from the git or zip https://github.com/JCurryCedarville/APE-Final-Project
+codux needs most of them (not sure which ones exactly)
+We were able to bring over all the privious functionality from privious projects
+we even added some new stuff (Wow!)
+note the use of dynamic loading to reduce to the load time of each element(it's a feature)(mouse over to load) 
+not all of everything we wanted to work works but most of it is
 
-This project was bootstrapped with [`create-react-app`](https://github.com/facebook/create-react-app).
+the express server is running on port 4000
+    run by "APE-Final-Project\src\MiddleWare> npm start"
+    [ we have a test server at the root :) ]
+    [make sure to set up sql with the provided file]
 
-It includes a single React component to start your project with, a sample [`codux.config.json`](codux.config.json) with preconfigured keys, a `package.json` file to describe the project's packages and dependencies, and a folder and component structure to put everything neatly in its place.
+the react node runs on port 3000
+    run by "APE-Final-Project> npm start"
 
-- Edit, render and compose apps that make use of **`React`**-based components.
-- Create components with **`TypeScript`**, **`SCSS`** and **`CSS Modules`** support.
-- Visually edit in real-time and in an isolated environment.
+most of the files are in 
+/src (main app)
+/src/components (all the fancy modules)
+/src/MiddleWare (express) 
 
-### Available Scripts
+you shouldnt need codux to run it, but just in case you can find it at https://www.codux.com/
 
-In the project directory, you can run:
+this was our first time using typescript, we had a good time.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-### Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+users
+    josh
+    chris
+    joe
+pswds
+    1234
+    lafafafa
+    mama
+roles
+    faculty
+    student 
+    student
