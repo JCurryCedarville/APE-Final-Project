@@ -1,11 +1,8 @@
 import styles from './App.module.scss';
 import { Planner } from './components/planner/planner';
 import { FacultyPage } from './components/faculty-page/faculty-page';
-import { useEffect, useState } from 'react';
 
 function App() {
-    const [UserData, setUserData] = useState({object: [{name: "", password: "", type: "", planId: "" }]});
-    const [planId, setPlan] = useState(0);
     function onFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
 
@@ -32,19 +29,10 @@ function App() {
             alert("Incorrect username or password");
         }
 
-        function updateUsers(){
-            fetch('http://localhost:4000/users/')
-            .then(res => res.json())
-            .then(data => setUserData(data))  
-            .catch(err => console.log(err));
-        }
-
-        function Show(page:string){ 
-            
+        function Show(page:string){            
             var n = document.getElementById(formData.name)?.getAttribute("value");    
             document.getElementById("planId")?.setAttribute("value", n as string);
-                
-                
+               
             if (page === "FacultyPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: block;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: none;");
@@ -53,10 +41,7 @@ function App() {
             else if (page === "PlannerPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: none;");
-                window.document.getElementById("Planner")?.setAttribute("style", "display: block;");
-
-                
-                
+                window.document.getElementById("Planner")?.setAttribute("style", "display: block;");   
             }
             else if (page === "LoginPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
