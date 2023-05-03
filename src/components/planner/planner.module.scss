@@ -10,7 +10,7 @@
     'UL UR'
     'BL BR';
   grid-auto-flow: row;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: minmax(auto, auto) minmax(auto, auto);
   max-height: 1000px;
 }
 .UL {
