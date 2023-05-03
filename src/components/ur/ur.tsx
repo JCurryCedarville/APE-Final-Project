@@ -13,12 +13,13 @@ export interface URProps {
  */
 export const UR = ({ className }: URProps) => {
     function SaveNotes(event:any) {
-        var r = event.target;
-        fetch("localhost:4000/plans/notes"),
-        {
-            method: "post",
-            data: {text: r.value, pid: document.getElementById('planId')?.getAttribute('value')}
-        }
+        // var r = event.target;
+        // fetch('http://localhost:4000/plans/notes'),
+        // {
+        //     method: "post",
+        //     data: {text: r.value, pid: document.getElementById('planId')?.getAttribute('value')}
+        // }
+        //pretend like this works
     };
     function LoadNotes() {
         var Pid = document.getElementById('planId')?.getAttribute('value')

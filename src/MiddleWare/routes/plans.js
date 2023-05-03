@@ -37,11 +37,15 @@ router.get('/name=:name', function(req, res, next){
   });
 
 router.post('/notes', function(req, res){
-    console.log(req)
-    console.log(res)
     var text = req.text;
     var pid = req.pid;
-    db.query("UPDATE `the_plan` as p SET p.notes='" + text + "' where p.id = '" + pid + "'")
+    var query = "UPDATE `the_plan` as p SET p.notes='" + text + "' where p.id = '" + pid + "'"
+    db.query(query, (err)=>{
+      if(err){
+        console.log("uh oh");
+        return;
+      }
+    });
 });
 
 module.exports = router;
