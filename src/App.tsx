@@ -16,6 +16,11 @@ function App() {
             formData[field.name] = field.value;
         });
 
+        //ran out of time to grab from database
+        //this would be easy to implement:
+        //grab the users matching the text in the username field
+        //if password matches, send them to a page based on their type
+        //else, send alert
         if ((formData.name === "Josh" || formData.name === "josh") && formData.password === "1234") {
             Show("FacultyPage");
         }
