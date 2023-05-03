@@ -40,21 +40,11 @@ function App() {
         }
 
         function Show(page:string){ 
-            updateUsers()
-            //set plan to logeed in user
-            console.log(UserData)
-            UserData.object.map((val, key) => {
-                console.log(val)
-                console.log(formData.name)
-                if (val.name === formData.name){
-                    document.getElementById("planId")?.setAttribute("value", val.planId);
-                }else{
-                    console.log("no match");
-                }
-                return (<></>);
-            }
-
-            );
+            
+            var n = document.getElementById(formData.name)?.getAttribute("value");    
+            document.getElementById("planId")?.setAttribute("value", n as string);
+                
+                
             if (page === "FacultyPage"){
                 window.document.getElementById("Faculty")?.setAttribute("style", "display: block;");
                 window.document.getElementById("Login")?.setAttribute("style", "display: none;");
