@@ -25,7 +25,7 @@ router.get('/name=:name', function(req, res, next){
     db.query(plansQuery, (err, rows) => {
   
       if(err){
-        console.log("plan by nmae get failed");
+        console.log("plan by name get failed");
         console.log(err);
         return;
       }
@@ -35,5 +35,13 @@ router.get('/name=:name', function(req, res, next){
       });
     });
   });
+
+router.post('/notes', function(req, res){
+    console.log(req)
+    console.log(res)
+    var text = req.text;
+    var pid = req.pid;
+    db.query("UPDATE `the_plan` as p SET p.notes='" + text + "' where p.id = '" + pid + "'")
+});
 
 module.exports = router;

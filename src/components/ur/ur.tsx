@@ -14,7 +14,11 @@ export interface URProps {
 export const UR = ({ className }: URProps) => {
     function SaveNotes(event:any) {
         var r = event.target;
-        console.log(r.value);
+        fetch("localhost:4000/plans/notes"),
+        {
+            method: "post",
+            data: {text: r.value, pid: document.getElementById('planId')?.getAttribute('value')}
+        }
     };
     function onUpdate(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -53,7 +57,7 @@ export const UR = ({ className }: URProps) => {
                             var obj = "course_id=" + course.course_id + " name=" + course.name + " term=" + course.term + " year=" + course.year + " credits=" + course.credits;
                             return(
                                 <li value={obj}>
-                                {course.course_id} {course.name} {course.credits}
+                                {course.course_id} {course.name} + {course.credits}
                                 <button onClick={deleteParent}> -X- </button>
                                 </li>
                             );
