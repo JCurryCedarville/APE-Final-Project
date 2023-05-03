@@ -14,11 +14,22 @@ export interface HeaderProps {
 export const Header = ({ className }: HeaderProps) => {
     const [Data, setData] = useState({object: [{id: "", user: "", name: "", is_default: "",  major: "",  dmajor: "",  minor: "" , dminor: "" ,cat_year: "" ,notes:""}]});
     const [Plans, setPlans] = useState({object: [{id: "", user: "", name: ""}]});
+    const [Credits, setCredits] = useState({object: [{credits: "" }]});
+    var sum:Number = 0;
+    Credits.object.forEach(function(course){
+        sum = sum + course.credits as unknown as Number;
+    });
+    
     var planState = document.getElementById('planId');
     function updateData(){
     fetch('http://localhost:4000/plans/id=' + document.getElementById('planId')?.getAttribute('value'))
         .then(res => res.json())
         .then(data => setData(data))  
+        .catch(err => console.log(err));
+
+    fetch('http://localhost:4000/courses/pid=' + document.getElementById('planId')?.getAttribute('value'))
+        .then(res => res.json())
+        .then(data => setCredits(data))  
         .catch(err => console.log(err));
     }
     function updatePlans(){
@@ -27,6 +38,16 @@ export const Header = ({ className }: HeaderProps) => {
         .then(plans => setPlans(plans))  
         .catch(err => console.log(err));
     }
+
+    function LogOut(){
+        window.document.getElementById("Faculty")?.setAttribute("style", "display: none;");
+        window.document.getElementById("Login")?.setAttribute("style", "display: block;");
+        window.document.getElementById("Planner")?.setAttribute("style", "display: none;");
+        document.getElementById("name")?.setAttribute('innerHTML', "");
+        document.getElementById("password")?.setAttribute('innerHTML', "");
+    }
+
+    
     
     return (
         <div className={classNames(styles.root, className)} >
@@ -45,13 +66,28 @@ export const Header = ({ className }: HeaderProps) => {
                             <strong>Student:</strong> {Data.object[0].user}
                         </p>
                     </div>
-
-                    <div id="infoMajor">
-                        <input type="hidden" id="MajorName" value={Data.object[0].major} />
-                        <p className="infoP">
-                            <strong>Major:</strong> {Data.object[0].major} {Data.object[0].dmajor}
-                        </p>
-                    </div>
+                    {Data.object.map((user, key) =>{
+                        if(user.dmajor !== null && user.dmajor !== ""){
+                            return(
+                                <div id="infoMajor">
+                                    <input type="hidden" id="MajorName" value={Data.object[0].major} />
+                                    <p className="infoP">
+                                        <strong>Major:</strong> {Data.object[0].major} + {Data.object[0].dmajor}
+                                    </p>
+                                </div>
+                            )
+                        }
+                        else{
+                            return(
+                                <div id="infoMajor">
+                                    <input type="hidden" id="MajorName" value={Data.object[0].major} />
+                                    <p className="infoP">
+                                        <strong>Major:</strong> {Data.object[0].major}
+                                    </p>
+                                </div>
+                            )
+                        }
+                    })}
 
                     <div id="infoCatalog">
                         <input type="hidden" id="yearNum" value={Data.object[0].cat_year} />
@@ -60,10 +96,34 @@ export const Header = ({ className }: HeaderProps) => {
                         </p>
                     </div>
 
-                    <div id="infoMinor">
-                        <input type="hidden" id="MinorName" value={Data.object[0].minor} />
+
+                    {Data.object.map((user, key) =>{
+                        if(user.dminor !== null && user.dminor !== ""){
+                            return(
+                                <div id="infoMinor">
+                                    <input type="hidden" id="MinorName" value={Data.object[0].minor} />
+                                    <p className="infoP">
+                                        <strong>Minor:</strong> {Data.object[0].minor} + {Data.object[0].dminor}
+                                    </p>
+                                </div>
+                            )
+                        }
+                        else{
+                            return(
+                                <div id="infoMinor">
+                                    <input type="hidden" id="MinorName" value={Data.object[0].minor} />
+                                    <p className="infoP">
+                                        <strong>Minor:</strong> {Data.object[0].minor}
+                                    </p>
+                                </div>  
+                            )
+                        }
+                    })}
+                    
+                    <div id="infoCredits">
+                        <input type="hidden" id="totalCredits"/>
                         <p className="infoP">
-                            <strong>Minor:</strong> {Data.object[0].minor} {Data.object[0].dminor}
+                            <strong>Credits:</strong> {sum as unknown as string}
                         </p>
                     </div>
                 </div>
@@ -75,6 +135,11 @@ export const Header = ({ className }: HeaderProps) => {
                                 return(<option value={plan.id}>{plan.name}</option>)
                             })}
                         </select>
+                    </div>
+                    <div>
+                        <button onClick={LogOut}>
+                            Log Out
+                        </button>
                     </div>
                 </div>
             </div>
