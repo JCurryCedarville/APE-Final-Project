@@ -30,7 +30,7 @@ export const UL = ({ className }: ULProps) => {
            {MajorData.object.map((item) => {
               if (item.course_type == "Core"){
                 return(
-                <li>
+                <li draggable>
                   {item.course_id} - {item.name}
                 </li>)
                 }
@@ -45,7 +45,7 @@ export const UL = ({ className }: ULProps) => {
            {MajorData.object.map((item) => {
               if (item.course_type == "Cognate"){
                 return(
-                <li>
+                <li draggable>
                   {item.course_id} - {item.name}
                 </li>)
                 }
@@ -60,7 +60,7 @@ export const UL = ({ className }: ULProps) => {
            {MajorData.object.map((item) => {
               if (item.course_type == "Elective"){
                 return(
-                <li>
+                <li draggable>
                   {item.course_id} - {item.name}
                 </li>)
                 }
@@ -74,7 +74,7 @@ export const UL = ({ className }: ULProps) => {
           <ul>
             {MinorData.object.map((item) => {
               return(
-                <li>
+                <li draggable>
                   {item.course_id} - {item.name}
                 </li>
               );
@@ -88,7 +88,7 @@ export const UL = ({ className }: ULProps) => {
           <ul>
             {GenEdData.object.map((item) => {
               return(
-                <li>
+                <li draggable>
                   {item.course_id} - {item.name}
                 </li>
               );

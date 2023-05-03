@@ -1,6 +1,7 @@
 import styles from './ur.module.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
+import addCourse from './addCourse';
 
 export interface URProps {
     className?: string;
@@ -34,6 +35,12 @@ export const UR = ({ className }: URProps) => {
         }
     });
     years.sort();
+    function deleteParent(event:any){
+        var r = event.target;
+        var p = r.parentNode;
+        p.parentNode.removeChild(p);
+    }
+    
 
     return (
         <div className={classNames(styles.root, className)} onMouseEnter={updateData}>
@@ -43,9 +50,13 @@ export const UR = ({ className }: URProps) => {
                     <ul>
                     {Data.object.map((course, key) => {
                         if(course.term === "Transfer"){
+                            var obj = "course_id=" + course.course_id + " name=" + course.name + " term=" + course.term + " year=" + course.year + " credits=" + course.credits;
                             return(
-                                <li>{course.course_id} {course.name}</li>
+                                <li value={obj}>
+                                <button onClick={deleteParent}> -X- </button>
+                                </li>
                             );
+                            
                         }
                         else{
                             return(null);
@@ -58,11 +69,13 @@ export const UR = ({ className }: URProps) => {
                         return(
                             <div className={styles.Semester}>
                                 <h1>Fall {year}</h1>
-                                <ul>
+                                <ul onDrop={addCourse} >
                                 {Data.object.map((course, key) => {
                                     if(course.year === year && course.term === "Fall"){
                                         return(
-                                            <li draggable>{course.course_id} {course.name} {course.credits}</li>
+                                            <li draggable>{course.course_id} {course.name} {course.credits}
+                                            <button onClick={deleteParent}> -X- </button>
+                                            </li>
                                         );
                                     }
                                     else{
@@ -81,7 +94,9 @@ export const UR = ({ className }: URProps) => {
                                 {Data.object.map((course, key) => {
                                     if(course.year === year && course.term === "Spring"){
                                         return(
-                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                            <li>{course.course_id} {course.name} {course.credits}
+                                            <button onClick={deleteParent}> -X- </button>
+                                            </li>
                                         );
                                     }
                                     else{
@@ -101,7 +116,9 @@ export const UR = ({ className }: URProps) => {
                                 {Data.object.map((course, key) => {
                                     if(course.year === year && course.term === "Spring"){
                                         return(
-                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                            <li>{course.course_id} {course.name} {course.credits}
+                                            <button onClick={deleteParent}> -X- </button>
+                                            </li>
                                         );
                                     }
                                     else{
@@ -116,7 +133,9 @@ export const UR = ({ className }: URProps) => {
                                 {Data.object.map((course, key) => {
                                     if(course.year === year && course.term === "Summer"){
                                         return(
-                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                            <li>{course.course_id} {course.name} {course.credits}
+                                            <button onClick={deleteParent}> -X- </button>
+                                            </li>
                                         );
                                     }
                                     else{
@@ -131,7 +150,9 @@ export const UR = ({ className }: URProps) => {
                                 {Data.object.map((course, key) => {
                                     if(course.year === year && course.term === "Fall"){
                                         return(
-                                            <li>{course.course_id} {course.name} {course.credits}</li>
+                                            <li>{course.course_id} {course.name} {course.credits}
+                                            <button onClick={deleteParent}> -X- </button>
+                                            </li>
                                         );
                                     }
                                     else{
